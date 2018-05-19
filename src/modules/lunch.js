@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-// import * as api from '../utils/api'
+import * as api from '../utils/api'
 
 // ------------------------------------
 // Constants
@@ -11,7 +11,17 @@ export const FETCH_PEOPLE = 'FETCH_PEOPLE'
 // ------------------------------------
 export const fetchPeople = () => {
   return (dispatch, getState) => {
+    api.fetchPeople().then(res => {
+      const people = res.data;
+      dispatch(fetchData(people));
+    });
+  }
+}
 
+function fetchData(data) {
+  return {
+    type: FETCH_PEOPLE,
+    data: data
   }
 }
 
@@ -26,6 +36,7 @@ export const actions = {
 function people (state = [], action) {
   switch (action.type) {
     case FETCH_PEOPLE:
+      return [...state, ...action.data]
     default:
       return state
   }

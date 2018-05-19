@@ -7,9 +7,11 @@
   },
   "proxy": "http://localhost:2018",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
     "compression": "^1.7.1",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "mongoose": "^5.0.1",
     "react": "^16.2.0",
